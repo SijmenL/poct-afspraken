@@ -1,59 +1,43 @@
 <?php
-/** @var array $reservations */
-require_once "array.php";
 
+$user = 'Sijmen';
+$hour = date('H');
+
+if ($hour >= 20) {
+    $greetings = "Goedenacht";
+} elseif ($hour > 17) {
+    $greetings = "Goedenavond";
+} elseif ($hour > 11) {
+    $greetings = "Goedemiddag";
+} elseif ($hour < 12) {
+    $greetings = "Goedenmorgen";
+}
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Nieuwe afspraken</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Check Star-shl</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-
 </head>
-<body>
-<h1>Overzicht Nieuwe Afspraken</h1>
-<table class="styled-table">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Naam</th>
-        <th>Achternaam</th>
-        <th>Locatie</th>
-        <th class="date-table">Datum</th>
-        <th>Tijd</th>
-        <th>Aantal</th>
-        <th>Opmerkingen</th>
-        <th class="button-table">Opties</th>
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <td colspan="6">&copy;Sijmen Lokers</td>
-    </tr>
-    </tfoot>
-    <tbody>
-    <?php foreach ($reservations as $index => $reservation) { ?>
-        <tr>
-            <td><?= $index + 1 ?></td>
-            <td><?= $reservation['name'] ?></td>
-            <td><?= $reservation['lastname'] ?></td>
-            <td><?= $reservation['location'] ?></td>
-            <td><?= $reservation['day'] . '-' . $reservation['month'] . '-' . $reservation['year'] ?></td>
-            <td><?= $reservation['time'] ?></td>
-            <td><?= $reservation['amount'] ?></td>
-            <td><?= $reservation['comment'] ?></td>
 
-            <td>
-                <a href=><button class="button accept">Accepteer</button></a>
-                <a href="details.php?index=<?= $index ?>"><button class="button normal">Details</button></a>
-                <a href="change.php?index=<?= $index ?>"><button class="button normal">Wijzigen</button></a>
-                <a href="mailto:<?= $reservation['mail'] ?>?subject=Opmerking ingeplande afspraak op <?= $reservation['date'] ?> <?= $reservation['time'] ?>&body=Deze mail gaat over de gemaakte afspraak door <?=$reservation['name'] ?> <?= $reservation['lastname']?> voor de locatie <?= $reservation['location'] ?> op <?= $reservation['date'] ?> <?= $reservation['time'] ?>. Opmerking: <?= $reservation['comment'] ?>"><button class="button notification" >Mail</button></button></a>
-                <a href=""><button class="button deny">Verwijder</button></a>
-            </td>
-        </tr>
-    <?php } ?>
-    </tbody></table>
+<header>
+    <section class="logos">
+    <img class="logo" src="img/check_logo.webp" alt="check logo">
+    <p class="role">POCT</p>
+    </section>
+    <img class="profile-picture" src="img/profile_picture.webp" alt="profile_picture">
+</header>
+
+<body>
+<section class="text-content">
+<h1><?=$greetings?>, <?= $user ?></h1>
+<h2>Snel naar:</h2>
+<a class="button normal" href="unaccepted-appointments.php">Ongeaccepteerde afspraken</a>
+<a class="button normal" href="form.php">Form</a>
+</section>
 </body>
 </html>
