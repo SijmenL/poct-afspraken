@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Offside&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+::selection {
+    background: #79b9d5;
+    color: white;
+}
+
+h1,
+h2{
+    color: #062d4b;
+    font-family: 'Offside', sans-serif;
+}
+
+li,
+p,
+th,
+td,
+a,
+button,
+input,
+label {
+    font-family: 'Open Sans',serif;
+    font-size: 12pt;
+}
+
+
+body {
+    background-image: url("../img/login_background.png");
+    /* Full height */
+    height: 100vh;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    display: flex;
+    align-content: center;
+}
+
+.login-field {
+    z-index: 2;
+    margin: auto auto;
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+img {
+    width: 60vw;
+    margin-right: 2.5vw;
+    margin-left: 1vw;
+    margin-bottom: 25px;
+}
+
+button {
+    background-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 5px;
+    text-decoration: none;
+    border-color: #062d4b;
+    color: darkblue;
+}
+
+button:hover {
+    background-color: #062d4b;
+    color: white;
+}
+
+button:active {
+    box-shadow: 0px 0px 5px 2px darkblue;
+    color: white;
+}
+
+.mobile-logo {
+    display: none;
+}
+
+.input {
+    width: 60vw;
+    height: 30px;
+}
+
+.label {
+    font-size: 30px;
+}
+
+.buttons {
+    margin-top: 10px;
+}
+
+
+h1 {
+    margin-bottom: 0;
+}
+
+.error {
+    color: rgb(231, 51, 76);
+    margin: 0;
+}
+
+
+.form-item {
+    margin: 5px 5px 20px;
+    font-family: 'Open Sans',serif;
+    font-size: 1em;
+}
+
+.styled-field {
+    border-radius: 5px;
+    background-color: white;
+    padding: 4px;
+    border-radius: 5px;
+    width: 70vw;
+    border: none;
+    border-bottom: 2px solid #062d4b;
+    display: flex;
+}
+
+.form select {
+    height: 32px;
+}
+
+@media (max-width: 630px) {
+    .web-logo {
+        display: none;
+    }
+    .mobile-logo {
+        display: block;
+    }
+    body {
+        background-image: url("../img/login-mobile.jpg");
+    }
+    .login-field {
+        margin-top: 0;
+        height: 100vh;
+        width: 90vw;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    h1, p {
+        align-self: center;
+    }
+}

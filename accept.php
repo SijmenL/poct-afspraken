@@ -1,4 +1,11 @@
 <?php
+session_start();
+require_once "includes/login_check.php";
+
+// Make sure the user is allowed to view the page
+$user_type = $_SESSION['loggedInUser']['account_type'];
+
+
 // vul de betreffende velden van het formulier met de data uit de database voor dit specifieke album
 /** @var array $db */
 
@@ -20,13 +27,13 @@ if (!isset($index)) {
 }
 
 if (!isset($data['id'])) {
-    header("Location: unaccepted-appointments.php?show=$show&search=$search&searchtype=$search_type&index=$index&view=$index&page=$page&max-items=$max_items_per_page&sortby=$sortmethod&sort=$sort");
+    header("Location: appointments-list.php?show=$show&search=$search&searchtype=$search_type&index=$index&view=$index&page=$page&max-items=$max_items_per_page&sortby=$sortmethod&sort=$sort");
 }
 
 $sql = "UPDATE `appointments` SET status = 1 WHERE id = '$index';";
 if (mysqli_query($db, $sql)) {
     echo "Wijziging doorgevoerd.";
-    header("Location: unaccepted-appointments.php?show=$show&search=$search&searchtype=$search_type&index=$index&view=$index&page=$page&max-items=$max_items_per_page&sortby=$sortmethod&sort=$sort");
+    header("Location: appointments-list.php?show=$show&search=$search&searchtype=$search_type&index=$index&view=$index&page=$page&max-items=$max_items_per_page&sortby=$sortmethod&sort=$sort");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($db);
 }
